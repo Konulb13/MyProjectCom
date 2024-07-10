@@ -7,11 +7,11 @@ import lombok.*;
 @Setter
 public class UserDTO {
     @NonNull
-    private String user_name;
+    private String userName;
     @NonNull
-    private String first_name;
+    private String firstName;
     @NonNull
-    private String last_name;
+    private String lastName;
     @NonNull
     private String email;
 
@@ -19,24 +19,24 @@ public class UserDTO {
 //    }
 //
 //    public String getUsername() {
-//        return user_name;
+//        return userName;
 //    }
 //    public void setUsername(String username) {
-//        this.user_name = username;
+//        this.userName = username;
 //    }
 //
 //    public String getFirstName() {
-//        return first_name;
+//        return firstName;
 //    }
 //    public void setFirstName(String firstName) {
-//        this.first_name = firstName;
+//        this.firstName = firstName;
 //    }
 //
 //    public String getLastName() {
-//        return last_name;
+//        return lastName;
 //    }
 //    public void setLastName(String lastName) {
-//        this.last_name = lastName;
+//        this.lastName = lastName;
 //    }
 //
 //    public String getEmail() {

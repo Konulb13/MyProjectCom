@@ -19,13 +19,13 @@ public class Order {   //vse
     @NonNull
     private Long id;
     @NonNull
-    private Date order_date;
+    private Date orderDate;
     @NonNull
-    private Date shipping_date;
+    private Date shippingDate;
     @NonNull
-    private String order_status;
+    private String orderStatus;
     @NonNull
-    private BigDecimal order_total;
+    private BigDecimal orderTotal;
 
     @OneToMany(mappedBy="order", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @NonNull

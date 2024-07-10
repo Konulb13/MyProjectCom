@@ -32,14 +32,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
 //    @Override
-//    public org.hibernate.query.Page<Product> findProductsByCriteria(java.awt.print.Pageable pageable, Integer price_low, Integer price_high, List<String> sizes, List<String> categories, List<String> brands, String search) {
+//    public org.hibernate.query.Page<Product> findProductsByCriteria(java.awt.print.Pageable pageable, Integer priceLow, Integer priceHigh, List<String> sizes, List<String> categories, List<String> brands, String search) {
 //        return null;
 //    }
 
     @Override
-    public Page<Product> findProductsByCriteria(Pageable pageable, Integer price_low, Integer price_high,
+    public Page<Product> findProductsByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
                                                 List<String> sizes, List<String> categories, List<String> brands, String search) {
-        Page<Product> page = productRepository.findAll(ProductDescription.filterBy(price_low, price_high, sizes, categories, brands, search), pageable);
+        Page<Product> page = productRepository.findAll(ProductDescription.filterBy(priceLow, priceHigh, sizes, categories, brands, search), pageable);
         return page;
     }
 

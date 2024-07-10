@@ -34,9 +34,9 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
-        log.info("Searching for username: {}",username);
-        return userRepository.findByUsername(username);
+    public User findByUsername(String userName) {
+        log.info("Searching for username: {}",userName);
+        return userRepository.findByUsername(userName);
     }
 
 
@@ -53,24 +53,24 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     @Transactional
-    public User createUser(String username, String password, String email, List<String> roles) {
-        User user = findByUsername(username);
+    public User createUser(String userName, String password, String email, List<String> roles) {
+        User user = findByUsername(userName);
         if (user != null) {
             return user;
         } else {
             log.info("user is null");
             user = new User();
-            user.setUser_name(username);
-//            log.info("username set eledim: " + user.getUser_name() );
+            user.setUserName(userName);
+//            log.info("username set eledim: " + user.getuserName() );
             user.setPassword(SecurityUtil.passwordEncoder().encode(password));
             user.setEmail(email);
 //            log.info("email set eledim: " + user.getEmail() );
             Set<UserRole> userRoles = new HashSet<>();
-            for (String role_name : roles) {
-                Role role = roleRepository.findByName(role_name);
+            for (String roleName : roles) {
+                Role role = roleRepository.findByName(roleName);
                 if (role == null) {
                     role = new Role();
-                    role.setName(role_name);
+                    role.setName(roleName);
                     roleRepository.save(role);
                 }
                 userRoles.add(new UserRole(role,user));

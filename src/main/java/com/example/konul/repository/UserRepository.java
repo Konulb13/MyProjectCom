@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository  extends CrudRepository<User, Long> {
     @EntityGraph(value = "UserComplete", type= EntityGraph.EntityGraphType.FETCH)
-    User findByUsername(String username);
+    User findByUsername(String userName);
 
     User findByEmail(String email);
 }

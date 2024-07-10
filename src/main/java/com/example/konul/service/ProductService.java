@@ -9,7 +9,7 @@ public interface ProductService {
 
     List<Product> findAllProducts();
 
-    Page<Product> findProductsByCriteria(Pageable pageable, Integer price_low, Integer price_high,
+    Page<Product> findProductsByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
                                                              List<String> sizes, List<String> categories, List<String> brands, String search);
 
     List<Product> findFirstProduct();

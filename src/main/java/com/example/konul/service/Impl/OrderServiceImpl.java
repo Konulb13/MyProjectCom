@@ -35,14 +35,14 @@ public class OrderServiceImpl implements OrderService {
         order.setUser(user);
         order.setPayment(payment);
         order.setShipping(shipping);
-        order.setOrder_total(shoppingCart.getGrandTotal());
+        order.setOrderTotal(shoppingCart.getGrandTotal());
         shipping.setOrder(order);
         payment.setOrder(order);
         LocalDate today = LocalDate.now();
         LocalDate estimatedDeliveryDate = today.plusDays(7);
-        order.setOrder_date(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        order.setShipping_date(Date.from(estimatedDeliveryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        order.setOrder_status("In Progress");
+        order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        order.setShippingDate(Date.from(estimatedDeliveryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        order.setOrderStatus("In Progress");
 
         order = orderRepository.save(order);
         List<CartItem> cartItems= shoppingCart.getCartItems();

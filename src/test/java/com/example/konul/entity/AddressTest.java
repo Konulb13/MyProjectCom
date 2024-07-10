@@ -23,21 +23,21 @@ public class AddressTest {
 
     @Test
     public void testSetAndGetCountry() {
-        String country = "USA";
+        String country = "Slovakia";
         address.setCountry(country);
         assertEquals(country, address.getCountry());
     }
 
     @Test
     public void testSetAndGetCity() {
-        String city = "New York";
+        String city = "Bratislava";
         address.setCity(city);
         assertEquals(city, address.getCity());
     }
 
     @Test
     public void testSetAndGetStreet() {
-        String street = "123 Main St";
+        String street = "Main St";
         address.setStreet(street);
         assertEquals(street, address.getStreet());
     }
@@ -52,15 +52,15 @@ public class AddressTest {
     @Test
     public void testAddressInitialization() {
         Address newAddress = new Address();
-        newAddress.setCountry("USA");
-        newAddress.setCity("New York");
-        newAddress.setStreet("123 Main St");
+        newAddress.setCountry("Slovakia");
+        newAddress.setCity("Bratislava");
+        newAddress.setStreet("Main St");
         newAddress.setZipCode("10001");
 
         assertNull(newAddress.getId());
-        assertEquals("USA", newAddress.getCountry());
-        assertEquals("New York", newAddress.getCity());
-        assertEquals("123 Main St", newAddress.getStreet());
+        assertEquals("Slovakia", newAddress.getCountry());
+        assertEquals("Bratislava", newAddress.getCity());
+        assertEquals("Main St", newAddress.getStreet());
         assertEquals("10001", newAddress.getZipCode());
     }
 }

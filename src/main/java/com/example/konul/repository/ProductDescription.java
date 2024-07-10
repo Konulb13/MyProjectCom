@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductDescription {
 
     @SuppressWarnings("serial")
-    public static Specification<Product> filterBy(Integer price_low, Integer price_high, List<String> sizes, List<String> categories, List<String> brands, String search) {
+    public static Specification<Product> filterBy(Integer priceLow, Integer priceHigh, List<String> sizes, List<String> categories, List<String> brands, String search) {
         return new Specification<Product>() {
             @Override
             public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -36,11 +36,11 @@ public class ProductDescription {
                 if (search != null && !search.isEmpty()) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("title"), "%" + search + "%")));
                 }
-                if (price_low != null && price_low >= 0) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), price_low)));
+                if (priceLow != null && priceLow >= 0) {
+                    predicates.add(criteriaBuilder.and(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), priceLow)));
                 }
-                if (price_high != null && price_high >= 0) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.lessThanOrEqualTo(root.get("price"), price_high)));
+                if (priceHigh != null && priceHigh >= 0) {
+                    predicates.add(criteriaBuilder.and(criteriaBuilder.lessThanOrEqualTo(root.get("price"), priceHigh)));
                 }
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }

@@ -39,8 +39,8 @@ public class OrderTest {
     public void testConstructor() {
         assertNotNull(order);
         assertEquals(1L, order.getId());
-        assertEquals("Pending", order.getOrder_status());
-        assertEquals(BigDecimal.valueOf(100.0), order.getOrder_total());
+        assertEquals("Pending", order.getOrderStatus());
+        assertEquals(BigDecimal.valueOf(100.0), order.getOrderTotal());
         assertEquals(cartItemList, order.getCartItems());
         assertEquals(shipping, order.getShipping());
         assertEquals(payment, order.getPayment());
@@ -53,18 +53,18 @@ public class OrderTest {
         assertEquals(2L, order.getId());
 
         Date newOrderDate = new Date();
-        order.setOrder_date(newOrderDate);
-        assertEquals(newOrderDate, order.getOrder_date());
+        order.setOrderDate(newOrderDate);
+        assertEquals(newOrderDate, order.getOrderDate());
 
         Date newShippingDate = new Date();
-        order.setShipping_date(newShippingDate);
-        assertEquals(newShippingDate, order.getShipping_date());
+        order.setShippingDate(newShippingDate);
+        assertEquals(newShippingDate, order.getShippingDate());
 
-        order.setOrder_status("Shipped");
-        assertEquals("Shipped", order.getOrder_status());
+        order.setOrderStatus("Shipped");
+        assertEquals("Shipped", order.getOrderStatus());
 
-        order.setOrder_total(BigDecimal.valueOf(200.0));
-        assertEquals(BigDecimal.valueOf(200.0), order.getOrder_total());
+        order.setOrderTotal(BigDecimal.valueOf(200.0));
+        assertEquals(BigDecimal.valueOf(200.0), order.getOrderTotal());
 
         List<CartItem> newCartItems = new ArrayList<>();
         order.setCartItems(newCartItems);

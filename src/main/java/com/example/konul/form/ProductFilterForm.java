@@ -14,9 +14,9 @@ public class ProductFilterForm {
     @NonNull
     private List<String>brand;
     @NonNull
-    private Integer price_low;
+    private Integer priceLow;
     @NonNull
-    private Integer price_high;
+    private Integer priceHigh;
     @NonNull
     private String sort;
     @NonNull
@@ -56,20 +56,20 @@ public class ProductFilterForm {
 //
 //
 //    public Integer getPricelow() {
-//        return price_low;
+//        return priceLow;
 //    }
 //
 //    public void setPricelow(Integer pricelow) {
-//        this.price_low = pricelow;
+//        this.priceLow = pricelow;
 //    }
 //
 //
 //    public Integer getPricehigh() {
-//        return price_high;
+//        return priceHigh;
 //    }
 //
 //    public void setPricehigh(Integer pricehigh) {
-//        this.price_high = pricehigh;
+//        this.priceHigh = pricehigh;
 //    }
 //
 //

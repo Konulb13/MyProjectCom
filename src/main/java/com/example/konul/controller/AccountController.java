@@ -81,12 +81,12 @@ public class AccountController {
     @RequestMapping(value = "/new-user",method = RequestMethod.POST)
     public String newUserPost(@Valid @ModelAttribute("user")User user, BindingResult bindingResult, @ModelAttribute("new-password")String password, RedirectAttributes redirectAttributes,Model model){
         model.addAttribute("email",user.getEmail());
-        model.addAttribute("username",user.getUser_name());
+        model.addAttribute("username",user.getUsername());
         boolean invalidFields =false;
         if(bindingResult.hasErrors()){
             return "redirect:/login";
         }
-        if(userService.findByUsername(user.getUser_name()) != null){
+        if(userService.findByUsername(user.getUsername()) != null){
             redirectAttributes.addFlashAttribute("usernameExist",true);
             invalidFields = true;
         }
@@ -97,8 +97,8 @@ public class AccountController {
         if (invalidFields){
             return "redirect:/login";
         }
-        user=userService.createUser(user.getUser_name(),password,user.getEmail(), Arrays.asList("ROLE_USER"));
-        userSecurityService.authenticateUser(user.getUser_name());
+        user=userService.createUser(user.getUsername(),password,user.getEmail(), Arrays.asList("ROLE_USER"));
+        userSecurityService.authenticateUser(user.getUsername());
         return "redirect:/my-profile";
     }
 
@@ -111,7 +111,7 @@ public class AccountController {
             throw new Exception ("User not found");
         }
         /*check username already exists*/
-        User existingUser = userService.findByUsername(user.getUser_name());
+        User existingUser = userService.findByUsername(user.getUsername());
         if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
             model.addAttribute("usernameExists", true);
             return "myProfile";
@@ -133,14 +133,14 @@ public class AccountController {
                 return "myProfile";
             }
         }
-        currentUser.setFirst_name(user.getFirst_name());
-        currentUser.setLast_name(user.getLast_name());
-        currentUser.setUser_name(user.getUser_name());
+        currentUser.setFirstName(user.getFirstName());
+        currentUser.setLastName(user.getLastName());
+        currentUser.setUserName(user.getUsername());
         currentUser.setEmail(user.getEmail());
         userService.save(currentUser);
         model.addAttribute("updateSuccess", true);
         model.addAttribute("user", currentUser);
-        userSecurityService.authenticateUser(currentUser.getUser_name());
+        userSecurityService.authenticateUser(currentUser.getUsername());
         return "myProfile";
     }
     @RequestMapping("/order-detail")

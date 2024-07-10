@@ -17,16 +17,16 @@ public class UserSecurityService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(userName);
         if (user == null) {
             throw new UsernameNotFoundException("Username is not found");
         }
         return user;
     }
 
-    public void authenticateUser(String username) {
-        UserDetails userDetails = loadUserByUsername(username);
+    public void authenticateUser(String userName) {
+        UserDetails userDetails = loadUserByUsername(userName);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
                 userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

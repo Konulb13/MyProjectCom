@@ -39,8 +39,8 @@ public class UserTest {
         assertNotNull(user);
         assertEquals(1L, user.getId());
         assertEquals("username", user.getUsername());
-        assertEquals("firstname", user.getFirst_name());
-        assertEquals("lastname", user.getLast_name());
+        assertEquals("firstname", user.getFirstName());
+        assertEquals("lastname", user.getLastName());
         assertEquals("password", user.getPassword());
         assertEquals("email@example.com", user.getEmail());
         assertEquals(address, user.getAddress());
@@ -53,14 +53,14 @@ public class UserTest {
         user.setId(2L);
         assertEquals(2L, user.getId());
 
-        user.setUser_name("newusername");
+        user.setUserName("newusername");
         assertEquals("newusername", user.getUsername());
 
-        user.setFirst_name("newfirstname");
-        assertEquals("newfirstname", user.getFirst_name());
+        user.setFirstName("newfirstname");
+        assertEquals("newfirstname", user.getFirstName());
 
-        user.setLast_name("newlastname");
-        assertEquals("newlastname", user.getLast_name());
+        user.setLastName("newlastname");
+        assertEquals("newlastname", user.getLastName());
 
         user.setPassword("newpassword");
         assertEquals("newpassword", user.getPassword());

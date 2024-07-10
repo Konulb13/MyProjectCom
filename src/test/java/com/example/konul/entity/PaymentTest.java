@@ -17,20 +17,20 @@ public class PaymentTest {
     public void setUp() {
         order = new Order();
         order.setId(1L);
-        order.setOrder_date(new Date());
-        order.setShipping_date(new Date());
-        order.setOrder_status("Pending");
-        order.setOrder_total(BigDecimal.valueOf(100.00));
+        order.setOrderDate(new Date());
+        order.setShippingDate(new Date());
+        order.setOrderStatus("Pending");
+        order.setOrderTotal(BigDecimal.valueOf(100.00));
 
         payment = new Payment();
         payment.setId(1L);
         payment.setType("Credit Card");
-        payment.setCard_name("Visa");
-        payment.setCard_number("1234567812345678");
-        payment.setExpiry_month(12);
-        payment.setExpiry_year(2025);
+        payment.setCardName("Visa");
+        payment.setCardNumber("1234567812345678");
+        payment.setExpiryMonth(12);
+        payment.setExpiryYear(2025);
         payment.setCvc(123);
-        payment.setHolder_name("John Doe");
+        payment.setHolderName("Konul Bairamova");
         payment.setOrder(order);
     }
 
@@ -51,29 +51,29 @@ public class PaymentTest {
     @Test
     public void testSetAndGetCardName() {
         String cardName = "MasterCard";
-        payment.setCard_name(cardName);
-        assertEquals(cardName, payment.getCard_name());
+        payment.setCardName(cardName);
+        assertEquals(cardName, payment.getCardName());
     }
 
     @Test
     public void testSetAndGetCardNumber() {
         String cardNumber = "8765432187654321";
-        payment.setCard_number(cardNumber);
-        assertEquals(cardNumber, payment.getCard_number());
+        payment.setCardNumber(cardNumber);
+        assertEquals(cardNumber, payment.getCardNumber());
     }
 
     @Test
     public void testSetAndGetExpiryMonth() {
         int month = 11;
-        payment.setExpiry_month(month);
-        assertEquals(month, payment.getExpiry_month());
+        payment.setExpiryMonth(month);
+        assertEquals(month, payment.getExpiryMonth());
     }
 
     @Test
     public void testSetAndGetExpiryYear() {
         int year = 2024;
-        payment.setExpiry_year(year);
-        assertEquals(year, payment.getExpiry_year());
+        payment.setExpiryYear(year);
+        assertEquals(year, payment.getExpiryYear());
     }
 
     @Test
@@ -85,9 +85,9 @@ public class PaymentTest {
 
     @Test
     public void testSetAndGetHolderName() {
-        String holderName = "Jane Doe";
-        payment.setHolder_name(holderName);
-        assertEquals(holderName, payment.getHolder_name());
+        String holderName = "Konul Bairamova";
+        payment.setHolderName(holderName);
+        assertEquals(holderName, payment.getHolderName());
     }
 
     @Test
@@ -102,12 +102,12 @@ public class PaymentTest {
     public void testPaymentInitialization() {
         assertEquals(1L, payment.getId());
         assertEquals("Credit Card", payment.getType());
-        assertEquals("Visa", payment.getCard_name());
-        assertEquals("1234567812345678", payment.getCard_number());
-        assertEquals(12, payment.getExpiry_month());
-        assertEquals(2025, payment.getExpiry_year());
+        assertEquals("Visa", payment.getCardName());
+        assertEquals("1234567812345678", payment.getCardNumber());
+        assertEquals(12, payment.getExpiryMonth());
+        assertEquals(2025, payment.getExpiryYear());
         assertEquals(123, payment.getCvc());
-        assertEquals("John Doe", payment.getHolder_name());
+        assertEquals("Konul Bairamova", payment.getHolderName());
         assertEquals(order, payment.getOrder());
     }
 }

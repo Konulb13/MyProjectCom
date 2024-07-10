@@ -24,7 +24,7 @@ public class StoreController {
         int pageNumber = (page == null || page < 1) ? 1 : page;  //      (page == null ) ?0 : page;
         SortFilter sortFilter = new SortFilter(filters.getSort());
         Page<Product> pageresult = productService.findProductsByCriteria(PageRequest.of(pageNumber, 8, sortFilter.getSortType()),
-                filters.getPrice_low(), filters.getPrice_high(), filters.getSize(),filters.getCategory(),filters.getBrand(),filters.getSearch());
+                filters.getPriceLow(), filters.getPriceHigh(), filters.getSize(),filters.getCategory(),filters.getBrand(),filters.getSearch());
         model.addAttribute("allCategories",productService.getAllCategories());
         model.addAttribute("allBrands",productService.getAllBrands());
         model.addAttribute("allSizes",productService.getAllSizes());

@@ -17,18 +17,18 @@ public class Payment {
     private String type;
     @NonNull
     private
-    String card_name;
+    String cardName;
     @NonNull
-    private String card_number;
+    private String cardNumber;
     @NonNull
-    private int expiry_month;
+    private int expiryMonth;
     @NonNull
-    private int expiry_year;
+    private int expiryYear;
     @NonNull
     private int cvc;
 
     @NonNull
-    private String holder_name;
+    private String  holderName;
 
     @OneToOne
     @NonNull

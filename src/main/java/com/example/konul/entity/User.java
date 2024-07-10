@@ -39,13 +39,13 @@ public class User
     private Long id;
 
     @NonNull
-    private String user_name;
+    private String userName;
 
     @NonNull
-    private String first_name;
+    private String firstName;
 
     @NonNull
-    private String last_name;
+    private String lastName;
 
     @NonNull
     private String password;
@@ -73,7 +73,7 @@ public class User
 
     @Override
     public String getUsername() {
-        return this.user_name;
+        return this.userName;
     }
 
     @Override
