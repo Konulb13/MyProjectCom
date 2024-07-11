@@ -63,14 +63,14 @@ public class AccountController {
     }
     @RequestMapping("/my-address")
     public String myAddress(Model model,Principal principal) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByUserName(principal.getName());
         model.addAttribute("user", user);
         return "myAddress";
     }
 
     @RequestMapping(value="/update-user-address",method = RequestMethod.POST)
     public String updateUserAddress(@ModelAttribute("address") Address address, Model model, Principal principal)throws Exception{
-        User currentUser = userService.findByUsername(principal.getName());
+        User currentUser = userService.findByUserName(principal.getName());
         if(currentUser==null){
             throw new Exception("User not found");
         }
@@ -86,7 +86,7 @@ public class AccountController {
         if(bindingResult.hasErrors()){
             return "redirect:/login";
         }
-        if(userService.findByUsername(user.getUsername()) != null){
+        if(userService.findByUserName(user.getUsername()) != null){
             redirectAttributes.addFlashAttribute("usernameExist",true);
             invalidFields = true;
         }
@@ -106,12 +106,12 @@ public class AccountController {
     public String updateUserInfo( @ModelAttribute("user") User user,
                                   @RequestParam("newPassword") String newPassword,
                                   Model model, Principal principal) throws Exception {
-        User currentUser = userService.findByUsername(principal.getName());
+        User currentUser = userService.findByUserName(principal.getName());
         if(currentUser == null) {
             throw new Exception ("User not found");
         }
         /*check username already exists*/
-        User existingUser = userService.findByUsername(user.getUsername());
+        User existingUser = userService.findByUserName(user.getUsername());
         if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
             model.addAttribute("usernameExists", true);
             return "myProfile";

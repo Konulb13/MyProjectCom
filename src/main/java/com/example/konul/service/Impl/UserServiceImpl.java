@@ -34,9 +34,9 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
-    public User findByUsername(String userName) {
+    public User findByUserName(String userName) {
         log.info("Searching for username: {}",userName);
-        return userRepository.findByUsername(userName);
+        return userRepository.findByUserName(userName);
     }
 
 
@@ -54,7 +54,7 @@ public class UserServiceImpl  implements UserService {
     @Override
     @Transactional
     public User createUser(String userName, String password, String email, List<String> roles) {
-        User user = findByUsername(userName);
+        User user = findByUserName(userName);
         if (user != null) {
             return user;
         } else {
