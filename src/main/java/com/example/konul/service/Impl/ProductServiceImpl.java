@@ -65,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Cacheable("size")
+    @Cacheable("sizes")
     public List<String>getAllSizes(){
         return productRepository.findAllSizes();
     }

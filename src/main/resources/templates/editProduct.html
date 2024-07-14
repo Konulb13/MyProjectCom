@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{common/header :: common-header}"/>
+<head th:replace="common/header :: common-header"/>
 
 <body>
-<div th:replace="~{adminHome :: navbarAdmin"}> </div>
+<div th:replace="adminHome :: navbarAdmin"> </div>
 
 <div class="container page-content">
     <form th:action="@{/product/edit}" method="post" enctype="multipart/form-data">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="picture" class="col-2 col-form-label text-right">Article image link</label>
+                <label for="picture" class="col-2 col-form-label text-right">Product image link</label>
                 <div class="col-6">
                     <input th:value="${product.picture}" type="text" class="form-control" id="picture" name="picture" >
                 </div>

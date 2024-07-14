@@ -82,6 +82,8 @@ public class AccountController {
     public String newUserPost(@Valid @ModelAttribute("user")User user, BindingResult bindingResult,
                               @ModelAttribute("new-password")String password,
                               RedirectAttributes redirectAttributes,Model model){
+        log.info("Username: {}", user.getUsername());
+        log.info("Email : {}",user.getEmail());
         model.addAttribute("email",user.getEmail());
         model.addAttribute("username",user.getUsername());
         boolean invalidFields =false;

@@ -24,7 +24,7 @@ public class Role {
 
     @OneToMany(mappedBy = "role",cascade = CascadeType.ALL,fetch =FetchType.LAZY)
     @NonNull
-    private Set<UserRole> userRole = new HashSet<>();
+    private Set<UserRole> userRoles = new HashSet<>();
 
 //    public Role() {
 //    }

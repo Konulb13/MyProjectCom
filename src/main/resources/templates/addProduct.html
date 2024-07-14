@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{common/header :: common-header}" />
+<head th:replace="common/header :: common-header" />
     <body>
-<div th:replace="~{adminHome :: navbarAdmin"}> </div>
-<div class="~{container page-content}">
+<div th:replace="adminHome :: navbarAdmin"> </div>
+<div class="container page-content">
     <form th:action="@{/product/add}" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend class="center-block">

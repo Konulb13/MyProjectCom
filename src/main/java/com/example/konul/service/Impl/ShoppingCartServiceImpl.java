@@ -24,7 +24,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @Cacheable("item_count")
+    @Cacheable("itemcount")
     public int getItemsNumber(User user) {
         return cartItemRepository.countDistinctByUserAndOrderIsNull(user);
     }
@@ -36,7 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @CacheEvict(value = "item_count", allEntries = true)
+    @CacheEvict(value = "itemcount", allEntries = true)
     public CartItem addArticleToShoppingCart(Product product, User user, int qty, String size) {
         ShoppingCart shoppingCart = this.getShoppingCart(user);
         CartItem cartItem = shoppingCart.findCartItemByProductAndSize(product.getId(), size);
@@ -55,13 +55,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cartItem;
     }
     @Override
-    @CacheEvict(value = "item_count", allEntries = true)
+    @CacheEvict(value = "itemcount", allEntries = true)
     public void removeCartItem(CartItem cartItem) {
         cartItemRepository.deleteById(cartItem.getId());
     }
 
     @Override
-    @CacheEvict(value = "item_count", allEntries = true)
+    @CacheEvict(value = "itemcount", allEntries = true)
     public void updateCartItem(CartItem cartItem, Integer qty) {
         if (qty == null || qty <= 0) {
             this.removeCartItem(cartItem);
@@ -71,7 +71,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
     @Override
-    @CacheEvict(value = "item_count", allEntries = true)
+    @CacheEvict(value = "itemcount", allEntries = true)
     public void clearShoppingCart(User user) {
         cartItemRepository.deleteAllByUserAndOrderIsNull(user);
     }

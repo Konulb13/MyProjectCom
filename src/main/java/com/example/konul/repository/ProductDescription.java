@@ -22,16 +22,16 @@ public class ProductDescription {
                 query.distinct(true);
                 if (sizes != null && !sizes.isEmpty()) {
                     Join<Product, Size> joinSize = root.join("sizes");
-                    predicates.add((Predicate) criteriaBuilder.and(joinSize.get("value").in(sizes)));
+                    predicates.add( criteriaBuilder.and(joinSize.get("value").in(sizes)));
 
                 }
                 if (categories != null && !categories.isEmpty()) {
                     Join<Product, Category> joinSize = root.join("categories");
-                    predicates.add((Predicate) criteriaBuilder.and(joinSize.get("name").in(categories)));
+                    predicates.add( criteriaBuilder.and(joinSize.get("name").in(categories)));
                 }
                 if (brands != null && !brands.isEmpty()) {
                     Join<Product, Brand> joinSize = root.join("brands");
-                    predicates.add((Predicate) criteriaBuilder.and(joinSize.get("name").in(brands)));
+                    predicates.add( criteriaBuilder.and(joinSize.get("name").in(brands)));
                 }
                 if (search != null && !search.isEmpty()) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("title"), "%" + search + "%")));

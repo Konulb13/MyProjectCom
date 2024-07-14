@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="~{common/header :: common-header}"/>
+<head th:replace="common/header :: common-header"/>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/header :: navbar}"> </div>
+<div th:replace="common/header :: navbar"> </div>
 
 <div class="container page-content">
     <form th:action="@{/checkout}" method="post">

@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    @CacheEvict(value="item_count",allEntries=true)
+    @CacheEvict(value="itemcount",allEntries=true)
     public synchronized Order createOrder(ShoppingCart shoppingCart, Shipping shipping, Payment payment, User user) {
         Order order = new Order();
         order.setUser(user);

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="~{common/header :: common-header}"/>
+<head th:replace="common/header :: common-header"/>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/header :: navbar}"> </div>
+<div th:replace="common/header :: navbar"> </div>
 
 <div class="container my-3 my-sm-5 page-content">
     <div class="row justify-content-center" id="row-login">
@@ -18,10 +18,11 @@
                                     <h2 class="mb-0">Log In</h2>
                                     <em>to your account</em>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="user"></i>
-                                        <input required="required" type="text" class="form-control" placeholder="Username" name="username"
+                                        <input required="required" type="text" class="form-control" placeholder="Username" name="userName"
                                                th:classappend="${param.error} ? is-invalid" >
                                     </div>
                                 </div>
@@ -68,7 +69,7 @@
                                     <div class="input-icon">
                                         <i data-feather="user"></i>
                                         <input required="required" type="text" class="form-control" th:classappend="${usernameExists} ? is-invalid"
-                                               placeholder="Username" name="username" th:value="${username}">
+                                               placeholder="Username" name="userName" th:value="${userName}">
                                         <div class="invalid-feedback">Username is already in use</div>
                                     </div>
                                 </div>
