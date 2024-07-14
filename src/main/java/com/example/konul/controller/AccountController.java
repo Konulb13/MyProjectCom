@@ -39,7 +39,7 @@ public class AccountController {
 
     @RequestMapping("/login")
     public String login(Model model) {
-        log.info("Model has come Usename {}, email {},{}",model.asMap().get("username"),model.asMap().get("email"),123);
+      log.info("Model has come Usename {}, email {},{}",model.asMap().get("username"),model.asMap().get("email"),123);
         model.addAttribute("usernameExist",model.asMap().get("usernameExist"));
         model.addAttribute("emailExist",model.asMap().get("emailExist"));
         return "myAccount";
@@ -79,7 +79,9 @@ public class AccountController {
         return "redirect:/my-address";
     }
     @RequestMapping(value = "/new-user",method = RequestMethod.POST)
-    public String newUserPost(@Valid @ModelAttribute("user")User user, BindingResult bindingResult, @ModelAttribute("new-password")String password, RedirectAttributes redirectAttributes,Model model){
+    public String newUserPost(@Valid @ModelAttribute("user")User user, BindingResult bindingResult,
+                              @ModelAttribute("new-password")String password,
+                              RedirectAttributes redirectAttributes,Model model){
         model.addAttribute("email",user.getEmail());
         model.addAttribute("username",user.getUsername());
         boolean invalidFields =false;

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{common/header :: common-header}"/>
+
+<body>
+
+<div class="container">
+    <div class="text-center">
+        <h1>Something went wrong!</h1>
+        <a href="/" class="btn btn-primary btn-lg my-3">Go Home</a>
+    </div>
+    <table class="table">
+        <tr>
+            <td>Error</td>
+            <td th:text="${error}"></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td th:text="${status}"></td>
+        </tr>
+        <tr>
+            <td>Path</td>
+            <td th:text="${path}"></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td th:text="${timestamp}"></td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td th:text="${message}"><td/>
+        </tr>
+    </table>
+</div>
+
+<div th:replace="common/header :: body-script"> </div>
+
+</body>
+</html>

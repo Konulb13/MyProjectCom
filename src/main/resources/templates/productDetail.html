@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header"></head>
+<head th:replace="~{common/header :: common-header}"></head>
 
 <body class="d-flex flex-column">
-<div th:replace="common/header :: navbar"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 <div class="container page-content mt-3 mb-3">
     <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Item added to the shopping cart !!</strong>
@@ -31,7 +31,7 @@
                     <h2 class="card-title" th:text="${product.title}"></h2>
                     <div class="d-flex align-items-center">
                         <h2 class="price font-weight-bold mr-3">
-                            <span th:text="'Rs '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>
+                            <span th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>
                         </h2>
                         <h6>(<span th:text="${product.stock}"></span> in stock)</h6>
                     </div>
@@ -71,8 +71,8 @@
     </div>
 </div>
 
-<div th:replace="common/header :: footer"> </div>
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>
 </html>
