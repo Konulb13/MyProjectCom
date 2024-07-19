@@ -19,7 +19,7 @@ public class BrandTest {
         product.setStock(10);
         product.setPicture("sample.jpg");
 
-        brand = new Brand(product, "BrandName");
+        brand = new Brand("BrandName",product);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BrandTest {
 
     @Test
     public void testConstructor() {
-        Brand newBrand = new Brand(product, "AnotherBrandName");
+        Brand newBrand = new Brand("AnotherBrandName",product);
         assertEquals(product, newBrand.getProduct());
         assertEquals("AnotherBrandName", newBrand.getName());
     }

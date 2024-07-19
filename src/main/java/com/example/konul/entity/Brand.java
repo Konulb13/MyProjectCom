@@ -21,8 +21,8 @@ public class Brand {
     @NonNull
     private  String name;
 
-    public Brand(@NonNull Product product, @NonNull String name) {
-        this.product = product;
+    public Brand( String name, Product product) {
         this.name = name;
+        this.product = product;
     }
 }

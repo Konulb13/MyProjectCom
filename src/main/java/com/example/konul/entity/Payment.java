@@ -13,17 +13,22 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     private Long id;
+
     @NonNull
     private String type;
+
     @NonNull
-    private
-    String cardName;
+    private String cardName;
+
     @NonNull
     private String cardNumber;
+
     @NonNull
     private int expiryMonth;
+
     @NonNull
     private int expiryYear;
+
     @NonNull
     private int cvc;
 

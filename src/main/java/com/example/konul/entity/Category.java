@@ -23,8 +23,8 @@ public class Category {
         this.product = product;
     }
 
-    public Category(@NonNull Product product, @NonNull String name) {
-        this.product = product;
+    public Category(String name, Product product) {
         this.name = name;
+        this.product = product;
     }
 }

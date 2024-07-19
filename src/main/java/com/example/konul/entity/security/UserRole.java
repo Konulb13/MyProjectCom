@@ -16,20 +16,22 @@ public class UserRole {
     @NonNull
     private Long userRoleId;
 
-    @ManyToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     @NonNull
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="role_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
     @NonNull
     private Role role;
 
-    public UserRole(@NonNull Role role, @NonNull User user) {
-        this.role = role;
+
+    public UserRole(User user, Role role) {
         this.user = user;
+        this.role = role;
     }
+}
 
     //    public UserRole() {
 //
@@ -63,5 +65,3 @@ public class UserRole {
 //    public void setRole(Role role) {
 //        this.role = role;
 //    }
-
-}

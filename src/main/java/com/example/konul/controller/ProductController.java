@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @RequestMapping("/product-list")
-    public String articleList(Model model) {
+    public String productList(Model model) {
         List<Product> products = productService.findAllProducts();
         model.addAttribute("products", products);
         return "productList";
@@ -54,7 +54,7 @@ public class ProductController {
         Product product = productService.findProductById(id);
         String preselectedSizes = "";
         for (Size size : product.getSizes()) {
-            preselectedSizes = preselectedSizes + (size.getValue() + ",");
+            preselectedSizes = preselectedSizes + (size.getValue() + ",");             //does that work right?
         }
         String preselectedBrands = "";
         for (Brand brand : product.getBrands()) {
@@ -94,5 +94,4 @@ public class ProductController {
         productService.deleteProductById(id);
         return "redirect:product-list";
     }
-
 }

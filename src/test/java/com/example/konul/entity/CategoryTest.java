@@ -16,7 +16,7 @@ public class CategoryTest {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        category = new Category(product, "Test Category");
+        category = new Category("Test Category",product);
     }
 
     @Test

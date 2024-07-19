@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    @Value("9")
+    @Value("8")
     private int featuredProductsNumber;
 
 

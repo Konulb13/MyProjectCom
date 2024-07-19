@@ -29,9 +29,7 @@ import java.util.Set;
 
 @Entity
 @SuppressWarnings("serial")
-public class User
-        implements UserDetails
-{
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false,updatable = false)
@@ -50,8 +48,8 @@ public class User
     @NonNull
     private String password;
 
-    @NotNull
     @Email
+    @NotNull
     private String email;
 
     @OneToOne(cascade= CascadeType.ALL, orphanRemoval = true)
@@ -59,7 +57,7 @@ public class User
     @NonNull
     private Address address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     @NonNull
     private Set<UserRole> userRoles = new HashSet<>();
@@ -78,22 +76,22 @@ public class User
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }}
 
 

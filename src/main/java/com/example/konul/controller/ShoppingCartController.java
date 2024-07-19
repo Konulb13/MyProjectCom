@@ -34,7 +34,8 @@ public class ShoppingCartController {
         return "shoppingCart";
     }
     @RequestMapping("/add-item")
-    public String addItem(@ModelAttribute("product") Product product, @RequestParam("quantity")String quantity,@RequestParam("size")String size,
+    public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty")String quantity,
+                          @RequestParam("size")String size,
                           RedirectAttributes redirectAttributes,Model model,Authentication authentication) {
         product= productService.findProductById(product.getId());
         if(!product.hasStock(Integer.parseInt(quantity))) {
@@ -47,16 +48,17 @@ public class ShoppingCartController {
         return "redirect:/product-detail?id="+product.getId();
     }
     @RequestMapping("/update-item")
-    public String updateItemQuantity(@RequestParam("id")Long cartItemId,@RequestParam("quantity")Integer quantity,Model model) {
+    public String updateItemQuantity(@RequestParam("id")Long cartItemId,
+                                     @RequestParam("qty")Integer quantity,Model model) {
         CartItem cartItem = shoppingCartService.findCartItemById(cartItemId);
         if (cartItem.canUpdateQuantity(quantity)){
             shoppingCartService.updateCartItem(cartItem,quantity);
         }
-        return "redirect:/shopping-cart-cart";
+        return "redirect:/shopping-cart/cart";
     }
     @RequestMapping("/remove-ietm")
     public String removeItem(@RequestParam("id")Long id){
         shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));
-        return "redirect:/shopping-cart-cart";
+        return "redirect:/shopping-cart/cart";
     }
 }

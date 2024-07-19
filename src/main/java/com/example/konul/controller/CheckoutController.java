@@ -40,8 +40,10 @@ public class CheckoutController {
     }
 
     @RequestMapping(value="/checkout",method= RequestMethod.POST)
-    public String placeOrder(@ModelAttribute("shipping") Shipping shipping, @ModelAttribute("address") Address address,
-                             @ModelAttribute("payment")Payment payment, RedirectAttributes redirectAttributes,Authentication authentication){
+    public String placeOrder(@ModelAttribute("shipping") Shipping shipping,
+                             @ModelAttribute("address") Address address,
+                             @ModelAttribute("payment")Payment payment,
+                             RedirectAttributes redirectAttributes,Authentication authentication){
         User user = (User) authentication.getPrincipal();
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);
         if(!shoppingCart.isEmpty()){

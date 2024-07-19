@@ -17,15 +17,15 @@ public class Role {
     @NonNull
     private Long roleId;
 
-    @Column( unique = true)
+    @Column(unique = true)
     @NonNull
     private String name;
 
 
-    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL,fetch =FetchType.LAZY)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @NonNull
     private Set<UserRole> userRoles = new HashSet<>();
-
+}
 //    public Role() {
 //    }
 //
@@ -52,4 +52,3 @@ public class Role {
 //    public void setUserRoles(Set<UserRole> userRoles) {
 //        this.userRoles = userRoles;
 //    }
-}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header" />
+<html lang="en"xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="~{common/header :: common-header}" />
     <body>
 <div th:replace="adminHome :: navbarAdmin"> </div>
 <div class="container page-content">
@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" id="title" name="title">
                 </div>
             </div>
-            <div> class="form-group row">
+            <div class="form-group row">
                 <label for="category" class="col-2 col-form-label text-right">Category</label>
                 <div class="col-6">
                     <input type="text" class="form-control" id="categories" name="category" data-role="tagsinput">
@@ -82,7 +82,7 @@
         </fieldset>
     </form>
 </div>
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 <script src="/js/tagsinput-custom.js"></script>
 </body>
 </html>

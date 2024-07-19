@@ -73,14 +73,14 @@ public class ProductBuilder {
         if (this.categories != null && !this.categories.isEmpty()) {
             Set<Category> categoryElements = new HashSet<>();
             for (String value: this.categories) {
-                categoryElements.add(new Category(product,value));
+                categoryElements.add(new Category(value,product));
             }
             product.setCategories(categoryElements);
         }
         if (this.brands != null && !this.brands.isEmpty()) {
             Set<Brand> brandElements = new HashSet<>();
             for (String value : this.brands) {
-                brandElements.add(new Brand(product,value));
+                brandElements.add(new Brand(value,product));
             }
             product.setBrands(brandElements);
         }

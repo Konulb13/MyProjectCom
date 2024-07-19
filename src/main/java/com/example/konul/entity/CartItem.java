@@ -35,7 +35,7 @@ public class CartItem {
     private Order order;
 
     public boolean canUpdateQuantity(Integer quantity) {
-        return quantity == null || this.getProduct().hasStock(quantity);
+        return quantity == null || quantity <= 0 || this.getProduct().hasStock(quantity);
     }
     public BigDecimal getSubtotal(){
         return new BigDecimal(product.getPrice()).multiply(new BigDecimal(quantity));

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="~{common/header :: common-header}">
     <meta charset="UTF-8">
 </head>
 <body class="d-flex flex-column">
@@ -31,11 +31,15 @@
                 <li class="nav-item">
                     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> LOG OUT </a>
                 </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/admin}"> ADMIN PORTAL </a>-->
+<!--                </li>-->
+
             </ul>
         </div>
     </nav>
 </div>
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>
 </html>

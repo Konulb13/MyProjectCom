@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/header :: common-header}"/>
 
 <body class="d-flex flex-column" >
-<div th:replace="common/header :: navbar"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="jumbotron jumbotron-fluid mt-0" th:style="'background-image: url(/image/background/banner.png);'">
     <div class="container">
@@ -23,11 +23,20 @@
         <div class="featured-items mt-4">
             <div class="card card-product card-featured" th:each="product : ${products}">
                 <div class="card-body">
-                    <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>
-                    <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>
-                    <div class="price"><span th:text="' € '+${product.price}"></span></div>
+                    <a th:href="@{/product-detail(id=${product.id})}">
+                        <img class="card-img-top" th:src="${product.picture} != null ? '/image/product/pictures/' + ${product.picture} + '.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap">
+                    </a>
+                    <a th:href="@{/product-detail(id=${product.id})}" class="card-title" th:text="${product.title}"></a>
+                    <div class="price"><span th:text="'€ ' + ${product.price}"></span></div>
                 </div>
             </div>
+<!--            <div class="card card-product card-featured" th:each="product : ${products}">-->
+<!--                <div class="card-body">-->
+<!--                    <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>-->
+<!--                    <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
+<!--                    <div class="price"><span th:text="' € '+${product.price}"></span></div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </section>
@@ -82,8 +91,8 @@
         </div>
     </div>
 </section>
-<div th:replace="common/header :: footer"> </div>
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -160,8 +169,9 @@
             ]
         });
     });
-</script>
 
+
+</script>
 </body>
 </html>
 

@@ -9,6 +9,7 @@ public interface UserRepository  extends CrudRepository<User, Long> {
     @EntityGraph(value = "UserComplete", type= EntityGraph.EntityGraphType.FETCH)
 
     User findByUserName(String userName);
+    User findFirstByUserName(String userName);
 
     User findByEmail(String email);
 }

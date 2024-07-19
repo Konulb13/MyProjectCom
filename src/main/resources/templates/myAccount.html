@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header"/>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/header :: common-header}" />
+
 
 <body class="d-flex flex-column">
-<div th:replace="common/header :: navbar"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="container my-3 my-sm-5 page-content">
     <div class="row justify-content-center" id="row-login">
@@ -13,7 +14,7 @@
                     <div class="row">
                         <!-- Login Form -->
                         <div class="col-md-6 col-login">
-                            <form th:action="@{/login}" method="post" >
+                            <form th:action="@{/login}" method="post" th:object="${login}" >
                                 <div class="form-group text-center mb-2">
                                     <h2 class="mb-0">Log In</h2>
                                     <em>to your account</em>
@@ -22,15 +23,15 @@
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="user"></i>
-                                        <input required="required" type="text" class="form-control" placeholder="Username" name="userName"
-                                               th:classappend="${param.error} ? is-invalid" >
+                                        <input required="required" type="text" class="form-control" placeholder="Username" name="username"
+                                               th:classappend="${param.error} ? ' is-invalid':''" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-icon">
                                         <i data-feather="lock"></i>
                                         <input required="required" type="password" class="form-control" placeholder="Password" name="password"
-                                               th:classappend="${param.error} ? is-invalid" >
+                                               th:classappend="${param.error} ? 'is-invalid' : ''">
                                         <div class="invalid-feedback">Incorrect username or password</div>
                                     </div>
                                 </div>
@@ -92,8 +93,8 @@
     </div>
 </div>
 
-<div th:replace="common/header :: footer"> </div>
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>
 </html>

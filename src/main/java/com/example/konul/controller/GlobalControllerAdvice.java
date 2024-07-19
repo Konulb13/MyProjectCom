@@ -31,7 +31,7 @@ public class GlobalControllerAdvice {
     @ModelAttribute
     public void populateModel(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null && !(authentication instanceof AnonymousAuthenticationToken)){
+        if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)){
             User user = (User) authentication.getPrincipal();
             if(user != null){
                 model.addAttribute("shoppingCartItemNumber",shoppingCartService.getItemsNumber(user));
@@ -40,14 +40,14 @@ public class GlobalControllerAdvice {
             model.addAttribute("shoppingCartItemNumber",0);
         }
     }
-    @ExceptionHandler(value=Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception ex)throws Exception{
-        if(AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null)
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception ex) throws Exception {
+        if (AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null)
             throw ex;
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("timestamp",new Date(System.currentTimeMillis()));
-        modelAndView.addObject("path",req.getRequestURI());
-        modelAndView.addObject("message",ex.getMessage());
+        modelAndView.addObject("timestamp", new Date(System.currentTimeMillis()));
+        modelAndView.addObject("path", req.getRequestURL());
+        modelAndView.addObject("message", ex.getMessage());
         modelAndView.setViewName(DEFAULT_ERROR_VIEW);
         return modelAndView;
     }

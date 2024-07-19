@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="common/header :: common-header"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head th:replace="~{common/header :: common-header}"/>
 
 <body>
 <div th:replace="adminHome :: navbarAdmin"> </div>
@@ -83,7 +83,7 @@
     </form>
 </div>
 
-<div th:replace="common/header :: body-scripts"> </div>
+<div th:replace="~{common/header :: body-scripts}"> </div>
 <script src="/js/tagsinput-custom.js"></script>
 
 </body>
