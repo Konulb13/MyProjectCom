@@ -31,7 +31,8 @@
                     <h2 class="card-title" th:text="${product.title}"></h2>
                     <div class="d-flex align-items-center">
                         <h2 class="price font-weight-bold mr-3">
-                            <span th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>
+<!--                            <span th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>-->
+                            <span th:text="' € ' + ${#numbers.formatDecimal(product.price, 0, T(java.lang.Math).round(product.price) == product.price ? 0 : 2)}"></span>
                         </h2>
                         <h6>(<span th:text="${product.stock}"></span> in stock)</h6>
                     </div>
