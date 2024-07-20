@@ -6,6 +6,7 @@ import com.example.konul.entity.ShoppingCart;
 import com.example.konul.entity.User;
 import com.example.konul.repository.CartItemRepository;
 import com.example.konul.service.ShoppingCartService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -36,23 +37,34 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
+  //  @Transactional
     @CacheEvict(value = "itemcount", allEntries = true)
-    public CartItem addArticleToShoppingCart(Product product, User user, int qty, String size) {
+    public CartItem addProductToShoppingCart(Product product, User user, int qty, String size) {
         ShoppingCart shoppingCart = this.getShoppingCart(user);
         CartItem cartItem = shoppingCart.findCartItemByProductAndSize(product.getId(), size);
-        if (cartItem != null && cartItem.hasSameSizeThan(size)) {
+        if (cartItem != null) {
             cartItem.addQuantity(qty);
-            cartItem.setSize(size);
-            cartItem = cartItemRepository.save(cartItem);
-        } else {
+        }else{
             cartItem = new CartItem();
             cartItem.setUser(user);
             cartItem.setProduct(product);
             cartItem.setQuantity(qty);
             cartItem.setSize(size);
-            cartItem = cartItemRepository.save(cartItem);
         }
-        return cartItem;
+//        if (cartItem != null && cartItem.hasSameSizeThan(size)) {
+//            cartItem.addQuantity(qty);
+//            cartItem.setSize(size);
+//            cartItem = cartItemRepository.save(cartItem);
+//        } else {
+//            cartItem = new CartItem();
+//            cartItem.setUser(user);
+//            cartItem.setProduct(product);
+//            cartItem.setQuantity(qty);
+//            cartItem.setSize(size);
+//            cartItem = cartItemRepository.save(cartItem);
+//        }
+        // return cartItem;
+        return cartItemRepository.save(cartItem);
     }
     @Override
     @CacheEvict(value = "itemcount", allEntries = true)
@@ -70,9 +82,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             cartItemRepository.save(cartItem);
         }
     }
+
     @Override
     @CacheEvict(value = "itemcount", allEntries = true)
     public void clearShoppingCart(User user) {
         cartItemRepository.deleteAllByUserAndOrderIsNull(user);
     }
+
 }

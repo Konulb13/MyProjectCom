@@ -7,7 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface CartItemRepository  extends CrudRepository<CartItem, Long> {
-    @EntityGraph(attributePaths = {"product"})
+    @EntityGraph(attributePaths = { "product" })
+
     List<CartItem>findAllByUserAndOrderIsNull(User user);
     void deleteAllByUserAndOrderIsNull(User user);
     int countDistinctByUserAndOrderIsNull(User user);

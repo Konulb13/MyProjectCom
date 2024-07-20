@@ -11,7 +11,7 @@ public interface ShoppingCartService {
 
     CartItem findCartItemById(Long cartItemId);
 
-    CartItem addArticleToShoppingCart(Product product, User user, int qty, String size);
+    CartItem addProductToShoppingCart(Product product, User user, int qty, String size);
 
     void clearShoppingCart(User user);
 

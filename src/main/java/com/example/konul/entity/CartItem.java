@@ -14,8 +14,10 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     private  Long id;
+
     @NonNull
     private int quantity;
+
     @NonNull
     private String size;
 

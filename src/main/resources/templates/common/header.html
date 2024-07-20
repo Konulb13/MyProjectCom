@@ -46,8 +46,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/shopping-cart/cart}">My Cart
 <!--                        th:text="${shoppingCartItemNumber != null && shoppingCartItemNumber > 0 ? shoppingCartItemNumber : ''}"></span>-->
-                        <span class="badge badge-primary badge-pill" style="vertical-align: top;" th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
-                    </a>
+                        <span class="badge badge-primary badge-pill" style="vertical-align: top;"
+                              th:if="${shoppingCartItemNumber != null and shoppingCartItemNumber > 0}"
+                              th:text="${shoppingCartItemNumber}"></span>                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto font-weight-bold">

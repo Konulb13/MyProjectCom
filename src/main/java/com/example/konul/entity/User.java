@@ -57,7 +57,7 @@ public class User implements UserDetails {
     @NonNull
     private Address address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     @NonNull
     private Set<UserRole> userRoles = new HashSet<>();

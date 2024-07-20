@@ -31,22 +31,26 @@ public class ShoppingCartController {
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);
         model.addAttribute("cartItemList",shoppingCart.getCartItems());
         model.addAttribute("shoppingCart",shoppingCart);
+        //
+        System.out.println("shoppingCart"+shoppingCart);
+        System.out.println("cartItemList"+shoppingCart.getCartItems());
         return "shoppingCart";
     }
     @RequestMapping("/add-item")
-    public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty")String quantity,
+    public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty")String qty,
                           @RequestParam("size")String size,
                           RedirectAttributes redirectAttributes,Model model,Authentication authentication) {
         product= productService.findProductById(product.getId());
-        if(!product.hasStock(Integer.parseInt(quantity))) {
-            redirectAttributes.addFlashAttribute("notEnoughStock",true);
+        if(!product.hasStock(Integer.parseInt(qty))) {
+            redirectAttributes.addFlashAttribute("notEnoughStock",true);  //???
             return "redirect:/article-detail?id="+product.getId();
         }
         User user = (User) authentication.getPrincipal();
-        shoppingCartService.addArticleToShoppingCart(product,user,Integer.parseInt(quantity),size);
+        shoppingCartService. addProductToShoppingCart(product,user,Integer.parseInt(qty),size);
         redirectAttributes.addFlashAttribute("addProductSuccess",true);
         return "redirect:/product-detail?id="+product.getId();
     }
+
     @RequestMapping("/update-item")
     public String updateItemQuantity(@RequestParam("id")Long cartItemId,
                                      @RequestParam("qty")Integer quantity,Model model) {
