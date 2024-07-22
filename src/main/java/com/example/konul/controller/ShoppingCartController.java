@@ -51,6 +51,24 @@ public class ShoppingCartController {
         return "redirect:/product-detail?id="+product.getId();
     }
 
+//    @RequestMapping("/add-item")
+//    public String addItem(@ModelAttribute("product") Product product, @RequestParam("qty") String qty,
+//                          @RequestParam("size") String size, RedirectAttributes redirectAttributes,
+//                          Model model, Authentication authentication) {
+//        product = productService.findProductById(product.getId());
+//        int quantity = Integer.parseInt(qty);
+//
+//        if (!product.hasStock(quantity)) {
+//            redirectAttributes.addFlashAttribute("notEnoughStock", true);
+//            return "redirect:/article-detail?id=" + product.getId();
+//        }
+//
+//        User user = (User) authentication.getPrincipal();
+//        shoppingCartService.addProductToShoppingCart(product, user, quantity, size);
+//        redirectAttributes.addFlashAttribute("addProductSuccess", true);
+//        return "redirect:/product-detail?id=" + product.getId();
+//    }
+
     @RequestMapping("/update-item")
     public String updateItemQuantity(@RequestParam("id")Long cartItemId,
                                      @RequestParam("qty")Integer quantity,Model model) {

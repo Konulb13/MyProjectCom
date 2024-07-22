@@ -16,7 +16,7 @@ public class CartItem {
     private  Long id;
 
     @NonNull
-    private int quantity;
+    private int quantity;  //int or Integer?
 
     @NonNull
     private String size;
