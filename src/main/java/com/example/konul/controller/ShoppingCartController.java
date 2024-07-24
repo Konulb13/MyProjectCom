@@ -78,7 +78,7 @@ public class ShoppingCartController {
         }
         return "redirect:/shopping-cart/cart";
     }
-    @RequestMapping("/remove-ietm")
+    @RequestMapping("/remove-item")
     public String removeItem(@RequestParam("id")Long id){
         shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));
         return "redirect:/shopping-cart/cart";

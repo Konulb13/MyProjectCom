@@ -17,10 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import util.SecurityUtil;
 
@@ -164,6 +161,16 @@ public class AccountController {
         Order order = orderService.findOrderWithDetails(id);
         mode.addAttribute("order", order);
         return "orderDetails";
+    }
+
+    @GetMapping("/admin")      // for admin to admin profile
+    public String adminHome(Model model,Long id) {
+        model.addAttribute("totalOrders", orderService.findOrderWithDetails(id));
+        // model.addAttribute("totalProducts",productService. );
+        model.addAttribute("totalUsers", userService.findByUserName(getClass().getName()));
+        model.addAttribute("pageTitle", "Admin Home");
+
+        return "redirect:/my-profile";
     }
 }
 

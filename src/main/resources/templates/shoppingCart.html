@@ -35,7 +35,7 @@
                                     <div class="col-sm-6">
                                         <input th:id="${cartItem.id}" th:disabled="${cartItem.product.stock==0}"
                                                type="number" min="0" max="${cartItem.product.stock}"
-                                               class="form-control cartItemQty" th:value="${cartItem.qty != null ? cartItem.qty : 0}">
+                                               class="form-control cartItemQty" th:value="${cartItem.quantity != null ? cartItem.quantity : 0}">
                                         <!--th:value="${cartItem.qty}"-->
                                         <button style="display: none;"
                                                 th:id="'update-item-'+${cartItem.id}" type="submit"
