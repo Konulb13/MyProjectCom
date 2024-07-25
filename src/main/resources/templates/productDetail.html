@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}"></head>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/header :: navbar}"> </div>
+<div th:replace="~{common/navbar :: navbar}"> </div>
 <div class="container page-content mt-3 mb-3">
     <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Item added to the shopping cart !!</strong>
@@ -72,7 +72,7 @@
     </div>
 </div>
 
-<div th:replace="~{common/header :: footer}"> </div>
+<div th:replace="~{common/footer :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>

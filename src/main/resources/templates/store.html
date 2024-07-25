@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}" ><!-- href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css"-->
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/header :: navbar}"> </div>
+<div th:replace="~{common/navbar :: navbar}"> </div>
 
 <form id="filter-form" th:action="@{/store}" method="get">
     <div class="container page-content">
@@ -209,7 +209,7 @@
 
 </form>
 
-<div th:replace="~{common/header :: footer}"> </div>
+<div th:replace="~{common/footer :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 <script>
     var sidebarContent = $('.accordion-sidebar').html()
