@@ -10,6 +10,7 @@ import java.util.HashSet;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {
+
     private Product product;
 
     @Mock
