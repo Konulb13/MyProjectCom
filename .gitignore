@@ -44,5 +44,6 @@ build/
 *.java
 
 ### test ###
-/test
+/test.java
 *test
+/.test.java
