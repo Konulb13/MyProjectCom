@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head th:replace="~{common/header :: common-header}" />
-    <body>
+<body>
 <div th:replace="adminHome :: navbarAdmin"> </div>
 <div class="container page-content">
     <form th:action="@{/product/add}" method="post" enctype="multipart/form-data">

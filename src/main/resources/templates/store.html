@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}" ><!-- href="${pageContext.request.contextPath}/resources/static/css/bootstrap.min.css"-->
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <form id="filter-form" th:action="@{/store}" method="get">
     <div class="container page-content">
@@ -104,26 +104,26 @@
                                 </div>
                             </div>
                         </div>
-                   <!--     <div class="btn-group ml-3">
-                            <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                <th:block th:switch="${filters.sort}">
-                                    <span id="dropdown-sort-text" th:case="'priceasc'">Low - High Price</span>
-                                    <span id="dropdown-sort-text" th:case="'pricedesc'">High - Low Price</span>
-                                    <span id="dropdown-sort-text" th:case="'alphasc'">A - Z Order</span>
-                                    <span id="dropdown-sort-text" th:case="'alphdesc'">Z - A Order</span>
-                                    <span id="dropdown-sort-text" th:case="*">Newest</span>
-                                </th:block>
-                                <i data-feather="chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                                <button class="dropdown-item button-sort" type="button" value="newest">Newest</button>
-                                <button class="dropdown-item button-sort" type="button" value="priceasc">Low - High Price</button>
-                                <button class="dropdown-item button-sort" type="button" value="pricedesc">High - Low Price</button>
-                                <button class="dropdown-item button-sort" type="button" value="alphasc">A - Z Order</button>
-                                <button class="dropdown-item button-sort" type="button" value="alphdesc">Z - A Order</button>
-                            </div>
-                        </div>-->
+                        <!--     <div class="btn-group ml-3">
+                                 <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown"
+                                         aria-haspopup="true" aria-expanded="false">
+                                     <th:block th:switch="${filters.sort}">
+                                         <span id="dropdown-sort-text" th:case="'priceasc'">Low - High Price</span>
+                                         <span id="dropdown-sort-text" th:case="'pricedesc'">High - Low Price</span>
+                                         <span id="dropdown-sort-text" th:case="'alphasc'">A - Z Order</span>
+                                         <span id="dropdown-sort-text" th:case="'alphdesc'">Z - A Order</span>
+                                         <span id="dropdown-sort-text" th:case="*">Newest</span>
+                                     </th:block>
+                                     <i data-feather="chevron-down"></i>
+                                 </button>
+                                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                     <button class="dropdown-item button-sort" type="button" value="newest">Newest</button>
+                                     <button class="dropdown-item button-sort" type="button" value="priceasc">Low - High Price</button>
+                                     <button class="dropdown-item button-sort" type="button" value="pricedesc">High - Low Price</button>
+                                     <button class="dropdown-item button-sort" type="button" value="alphasc">A - Z Order</button>
+                                     <button class="dropdown-item button-sort" type="button" value="alphdesc">Z - A Order</button>
+                                 </div>
+                             </div>-->
                         <div class="btn-group ml-3">
                             <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
@@ -163,13 +163,13 @@
                             <div class="price"><span th:text="'€ ' + ${product.price}"></span></div>
                         </div>
                     </div>
-<!--                    <div class="card card-product" th:each="product : ${products}">-->
-<!--                        <div class="card-body">-->
-<!--                            <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>-->
-<!--                            <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
-<!--                            <div class="price"><span class="h5" th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"> </span></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="card card-product" th:each="product : ${products}">-->
+                    <!--                        <div class="card-body">-->
+                    <!--                            <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>-->
+                    <!--                            <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
+                    <!--                            <div class="price"><span class="h5" th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"> </span></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
                 <!-- /Shop Grid -->
 
@@ -209,7 +209,7 @@
 
 </form>
 
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 <script>
     var sidebarContent = $('.accordion-sidebar').html()

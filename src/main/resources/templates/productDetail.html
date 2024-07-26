@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}"></head>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 <div class="container page-content mt-3 mb-3">
     <div th:if="${addProductSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Item added to the shopping cart !!</strong>
@@ -16,11 +16,11 @@
         </button>
     </div>
     <div th:if="${notEnoughStock}" class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Could not add to cart, only <span th:text="${product.stock}"></span> in stock.</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+        <strong>Could not add to cart, only <span th:text="${product.stock}"></span> in stock.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -31,12 +31,12 @@
                     <h2 class="card-title" th:text="${product.title}"></h2>
                     <div class="d-flex align-items-center">
                         <h2 class="price font-weight-bold mr-3">
-<!--                            <span th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>-->
+                            <!--                            <span th:text="' € '+${#numbers.formatDecimal(product.price, 0, T(Math).round(product.price) == product.price ? 0 : 2)}"></span>-->
                             <span th:text="' € ' + ${#numbers.formatDecimal(product.price, 0, T(java.lang.Math).round(product.price) == product.price ? 0 : 2)}"></span>
                         </h2>
                         <h6>(<span th:text="${product.stock}"></span> in stock)</h6>
                     </div>
-<!--                    <p class="d-none d-lg-block">Best Products available from all over the world</p>-->
+                    <!--                    <p class="d-none d-lg-block">Best Products available from all over the world</p>-->
                     <form th:action="@{/shopping-cart/add-item}" method="post">
                         <input hidden="hidden" th:field="*{product.id}">
                         <div class="form-row">
@@ -72,7 +72,7 @@
     </div>
 </div>
 
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>

@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}"></head>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="container page-content">
     <div class="row">
@@ -32,19 +32,19 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="billingAddress">Address</label>
-                                <input type="text" class="form-control" th:name="streetAddress" th:value="${user?.address?.streetAddress}">
+                                <input type="text" class="form-control" name="street" th:value="${user?.address?.street}">
                             </div>
                             <div class="form-group col-6 col-sm-5">
                                 <label for="billingCountry">Country</label>
-                                <input type="text" class="form-control" th:name="country" th:value="${user?.address?.country}">
+                                <input type="text" class="form-control" name="country" th:value="${user?.address?.country}">
                             </div>
                             <div class="form-group col-6 col-sm-5">
                                 <label for="billingCity">City</label>
-                                <input type="text" class="form-control"   th:name="city" th:value="${user?.address?.city}">
+                                <input type="text" class="form-control" name="city" th:value="${user?.address?.city}">
                             </div>
                             <div class="form-group col-3 col-sm-2">
                                 <label for="billingZip">ZIP Code</label>
-                                <input type="number" class="form-control" th:name="zipCode" th:value="${user?.address?.zipCode}">
+                                <input type="number" class="form-control" name="zipCode" th:value="${user?.address?.zipCode}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,7 +59,7 @@
     </div>
 </div> <!--  end container -->
 
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 
 <div th:replace="~{common/header :: body-scripts}"> </div>
 

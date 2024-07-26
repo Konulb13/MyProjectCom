@@ -4,7 +4,7 @@
 
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="container page-content">
     <form th:action="@{/shopping-cart/update-item}" method="post">
@@ -63,7 +63,7 @@
         </div>
     </form>
 </div>
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 <script>
     $(document).ready(function(){

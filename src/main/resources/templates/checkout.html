@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}"/>
 
 <body class="d-flex flex-column">
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="container page-content">
     <form th:action="@{/checkout}" method="post">
@@ -226,7 +226,7 @@
 
 </div> <!--  end container -->
 
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 
 </body>

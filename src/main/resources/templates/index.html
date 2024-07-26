@@ -3,7 +3,7 @@
 <head th:replace="~{common/header :: common-header}"/>
 
 <body class="d-flex flex-column" >
-<div th:replace="~{common/navbar :: navbar}"> </div>
+<div th:replace="~{common/header :: navbar}"> </div>
 
 <div class="jumbotron jumbotron-fluid mt-0" th:style="'background-image: url(/image/background/banner.png);'">
     <div class="container">
@@ -30,13 +30,13 @@
                     <div class="price"><span th:text="'€ ' + ${product.price}"></span></div>
                 </div>
             </div>
-<!--            <div class="card card-product card-featured" th:each="product : ${products}">-->
-<!--                <div class="card-body">-->
-<!--                    <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>-->
-<!--                    <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
-<!--                    <div class="price"><span th:text="' € '+${product.price}"></span></div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="card card-product card-featured" th:each="product : ${products}">-->
+            <!--                <div class="card-body">-->
+            <!--                    <a th:href="@{/product-detail?id=}+${product.id}"><img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap"></a>-->
+            <!--                    <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
+            <!--                    <div class="price"><span th:text="' € '+${product.price}"></span></div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
     </div>
 </section>
@@ -91,236 +91,86 @@
         </div>
     </div>
 </section>
-<div th:replace="~{common/footer :: footer}"> </div>
+<div th:replace="~{common/header :: footer}"> </div>
 <div th:replace="~{common/header :: body-scripts}"> </div>
 
-<script src="/js/carousel.js" type="text/javascript">
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.featured-items').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        })
+            .on('setPosition', function (event, slick) {
+                slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+            });
+        $('.featured-brands').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 550,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 380,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+            ]
+        });
+    });
+
+
 </script>
 </body>
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Konul E-commerce Platform</title>-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="styles.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header class="bg-dark text-white text-center py-3">-->
-<!--    <h1>My E-commerce Platform</h1>-->
-<!--    <nav>-->
-<!--        <ul class="nav justify-content-center">-->
-<!--            <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link text-white" href="#">Shop</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link text-white" href="#">About</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
-<!--</header>-->
-<!--<main class="container my-5">-->
-<!--    <section class="hero text-center py-5 bg-light">-->
-<!--        <h2>Welcome to the best online shop</h2>-->
-<!--        <p>Find everything you need in one place</p>-->
-<!--    </section>-->
-<!--    <section class="products">-->
-<!--        <h2 class="text-center my-4">Featured Products</h2>-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-4">-->
-<!--                <div class="product-item card mb-4 shadow-sm">-->
-<!--                    <div class="card-body">-->
-<!--                        <h3 class="card-title">Product 1</h3>-->
-<!--                        <p class="card-text">Description of Product 1</p>-->
-<!--                        <button class="btn btn-dark">Add to Cart</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-md-4">-->
-<!--                <div class="product-item card mb-4 shadow-sm">-->
-<!--                    <div class="card-body">-->
-<!--                        <h3 class="card-title">Product 2</h3>-->
-<!--                        <p class="card-text">Description of Product 2</p>-->
-<!--                        <button class="btn btn-dark">Add to Cart</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--</main>-->
-<!--<footer class="bg-dark text-white text-center py-3">-->
-<!--    <p>&copy; 2024 Konul E-commerce Platform</p>-->
-<!--</footer>-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
-<!--<head th:replace="common/header :: common-header"></head>-->
-
-<!--<body class="d-flex flex-column">-->
-<!--<div th:replace="common/navbar :: navbar"></div>-->
-
-<!--<div class="jumbotron jumbotron-fluid mt-0" th:style="'background-image: url(/image/background/banner.png);'">-->
-<!--    <div class="container">-->
-<!--        <div class="row text-left py-5">-->
-<!--            <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">-->
-<!--                <h1 class="bg-warning text-dark d-inline-block p-1">Kshop</h1>-->
-<!--                <h2 class="font-weight-bold">The world of shopping in one click</h2>-->
-<!--                <a th:href="@{/store}" class="btn btn-primary rounded-pill" data-addclass-on-xs="btn-sm">SHOP NOW</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<section class="section py-5">-->
-<!--    <div class="container text-center">-->
-<!--        <h4 class="font-weight-bold">Featured products</h4>-->
-<!--        <div class="featured-items mt-4">-->
-<!--            <div class="card card-product card-featured" th:each="product : ${products}">-->
-<!--                <div class="card-body">-->
-<!--                    <a th:href="@{/product-detail?id=}+${product.id}">-->
-<!--                        <img class="card-img-top" th:src="${product.picture} ? '/image/product/pictures/'+${product.picture}+'.jpg' : '/image/product/itemexample.jpg'" alt="Card image cap">-->
-<!--                    </a>-->
-<!--                    <a th:href="@{/product-detail?id=}+${product.id}" class="card-title" th:text="${product.title}"></a>-->
-<!--                    <div class="price"><span th:text="' € '+${product.price}"></span></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!--<section class="section py-5 bg-white">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-sm-6 col-md-4 mb-2">-->
-<!--                <div class="text-center features-card">-->
-<!--                    <i data-feather="truck" class="text-info"></i>-->
-<!--                    <h5>Free Shipping</h5>-->
-<!--                    <p>Getting orders from delivery stations to customers’ doorsteps is the “last mile” for delivery. We deliver goods to homes and businesses all over the world...</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-sm-6 col-md-4 mb-2">-->
-<!--                <div class="text-center features-card">-->
-<!--                    <i data-feather="user" class="text-info"></i>-->
-<!--                    <h5>Support 24/7</h5>-->
-<!--                    <p>Our fulfilment network is made up of state-of-the-art technology and a variety of building types and sizes to support processing orders, but it is truly our people who bring the magic of Shopper's Zone to life for our customers...</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-sm-6 col-md-4 mb-2">-->
-<!--                <div class="text-center features-card">-->
-<!--                    <i data-feather="gift" class="text-info"></i>-->
-<!--                    <h5>Gift cards</h5>-->
-<!--                    <p>Our Operations and award-winning Customer Service teams are at the heart of Shopper's Zone mission to be Earth’s most customer-centric company. Together, we create, we build and we take ownership for what we do...</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!--<section class="section pt-5">-->
-<!--    <div class="container text-center">-->
-<!--        <h4 class="font-weight-bold">Popular brands</h4>-->
-<!--        <div class="featured-brands mt-3">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/01.png" alt="Brand 01">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/02.png" alt="Brand 02">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/03.png" alt="Brand 03">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/04.png" alt="Brand 04">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/05.png" alt="Brand 05">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/06.png" alt="Brand 06">-->
-<!--            <img class="img-fluid py-5 px-5" src="/image/brands/07.png" alt="Brand 07">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!--<div th:replace="common/footer :: footer"></div>-->
-<!--<div th:replace="common/header :: body-scripts"></div>-->
-
-<!--<script type="text/javascript">-->
-<!--    $(document).ready(function(){-->
-<!--        $('.featured-items').slick({-->
-<!--            infinite: true,-->
-<!--            slidesToShow: 4,-->
-<!--            slidesToScroll: 4,-->
-<!--            responsive: [-->
-<!--                {-->
-<!--                    breakpoint: 1200,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 3,-->
-<!--                        slidesToScroll: 3,-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 768,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 2,-->
-<!--                        slidesToScroll: 2-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 480,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 1,-->
-<!--                        slidesToScroll: 1-->
-<!--                    }-->
-<!--                }-->
-<!--            ]-->
-<!--        })-->
-<!--            .on('setPosition', function (event, slick) {-->
-<!--                slick.$slides.css('height', slick.$slideTrack.height() + 'px');-->
-<!--            });-->
-
-<!--        $('.featured-brands').slick({-->
-<!--            slidesToShow: 6,-->
-<!--            slidesToScroll: 1,-->
-<!--            responsive: [-->
-<!--                {-->
-<!--                    breakpoint: 1200,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 5,-->
-<!--                        slidesToScroll: 1,-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 992,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 4,-->
-<!--                        slidesToScroll: 4-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 768,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 3,-->
-<!--                        slidesToScroll: 3-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 550,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 2,-->
-<!--                        slidesToScroll: 2-->
-<!--                    }-->
-<!--                },-->
-<!--                {-->
-<!--                    breakpoint: 380,-->
-<!--                    settings: {-->
-<!--                        slidesToShow: 1,-->
-<!--                        slidesToScroll: 1-->
-<!--                    }-->
-<!--                },-->
-<!--            ]-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
-
-<!--</body>-->
-<!--</html>-->

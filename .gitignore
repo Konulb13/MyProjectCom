@@ -35,3 +35,9 @@ build/
 ### logs  files ###
 *.log
 /.konul.log
+*.konul.log.2024-07-24.0.gz
+/.konul.log.2024-07-24.0.gz
+/.konul.log.2024-07-25.0.gz
+
+### .java ###
+/.java
