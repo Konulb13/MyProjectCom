@@ -6,7 +6,6 @@ import com.example.konul.entity.ShoppingCart;
 import com.example.konul.entity.User;
 import com.example.konul.repository.CartItemRepository;
 import com.example.konul.service.ShoppingCartService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -52,19 +51,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             cartItem.setQuantity(qty);
             cartItem.setSize(size);
         }
-//        if (cartItem != null && cartItem.hasSameSizeThan(size)) {
-//            cartItem.addQuantity(qty);
-//            cartItem.setSize(size);
-//            cartItem = cartItemRepository.save(cartItem);
-//        } else {
-//            cartItem = new CartItem();
-//            cartItem.setUser(user);
-//            cartItem.setProduct(product);
-//            cartItem.setQuantity(qty);
-//            cartItem.setSize(size);
-//            cartItem = cartItemRepository.save(cartItem);
-//        }
-        // return cartItem;
         return cartItemRepository.save(cartItem);
     }
     @Override
